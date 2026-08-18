@@ -18,6 +18,7 @@ void main()
     DS1302_Init();
     LCD_Init();
     Timer0_Init();
+    Timer0_Start();
     DS1302_SetTime(Time);
 
     LCD_ShowString(1, 5, "  -  -  ");
@@ -30,6 +31,20 @@ void main()
 
     while (1)
     {
+        if(MODE == TIMESHOW)
+        {
+            if (Blink)
+            {
+                LCD_ShowChar(2, 7, ' ');
+                LCD_ShowChar(2, 10, ' ');
+            }
+            else
+            {
+                LCD_ShowChar(2, 7, ':');
+                LCD_ShowChar(2, 10, ':');
+            }
+        }
+
         KeyNum = Key();
 
         if (KeyNum == 1)
@@ -39,7 +54,6 @@ void main()
                 MODE = TIMESET;
                 Select_Clean();
                 DS1302_Stop();
-                Timer0_Start();
 
                 LCD_ShowString(1, 1, "  -  -          ");
                 LCD_ShowString(2, 1, "  :  :          ");
@@ -56,7 +70,6 @@ void main()
             {
                 MODE = TIMESHOW;
                 DS1302_SetTime(Time);
-                Timer0_Stop();
 
                 LCD_ShowString(1, 1, "      -  -      ");
                 LCD_ShowString(2, 1, "      :  :      ");
