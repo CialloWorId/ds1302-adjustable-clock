@@ -1,0 +1,8 @@
+#ifndef __TIMER0_H__
+#define __TIMER0_H__
+
+void Timer0_Init();
+void Timer0_Start();
+void Timer0_Stop();
+
+#endif
