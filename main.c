@@ -4,6 +4,7 @@
 #include "Timer0.h"
 #include "Clock.h"
 #include "Key.h"
+#include "Buzzer.h"
 
 #define TIMESHOW 0
 #define TIMESET 1
@@ -46,6 +47,11 @@ void main()
         }
 
         KeyNum = Key();
+
+        if(KeyNum)
+        {
+            Buzzer(100);
+        }
 
         if (KeyNum == 1)
         {

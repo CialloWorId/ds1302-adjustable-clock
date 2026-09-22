@@ -12,7 +12,7 @@ sbit DS1302_SCLK = P3 ^ 6;
 sbit DS1302_IO = P3 ^ 4;
 sbit DS1302_CE = P3 ^ 5;
 
-void DS1302_WriteByte(unsigned char Command, Data)
+void DS1302_WriteByte(unsigned char Command,unsigned char Data)
 {
     unsigned char i;
 
